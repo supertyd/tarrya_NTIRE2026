@@ -5,6 +5,7 @@ train_ckpt
 visuals
 tests
 checkpoints/
+tmp/
 
 
 *.DS_Store
