@@ -45,7 +45,7 @@ https://drive.usercontent.google.com/download?id=1UZA_AEdV5EgqWl9lozYo12YrET-Pno
 In our local setup, the test images are stored at:
 
 ```text
-/home/yuedong_tan/datasets/ntire2026_dn50_testing/LSDIR_DIV2K_Test_Sigma50
+<PATH_TO_TEST_SET>/LSDIR_DIV2K_Test_Sigma50
 ```
 
 The directory contains 200 PNG images.
@@ -53,6 +53,12 @@ The directory contains 200 PNG images.
 ## 4. Checkpoint
 
 The pretrained checkpoint is not included in this repository.
+
+Official checkpoint source from the original MoCE-IR repository:
+
+```text
+https://drive.google.com/drive/folders/1pQBceb8cCPdIzbqbNNGqV5qNXzzqL4uK?usp=share_link
+```
 
 Expected local path after you place the checkpoint manually:
 
@@ -68,7 +74,7 @@ Run:
 micromamba run -n moceir_pip python src/infer_competition.py \
   --model MoCE_IR \
   --checkpoint_id MoCE_IR_AIO3 \
-  --input_dir /home/yuedong_tan/datasets/ntire2026_dn50_testing/LSDIR_DIV2K_Test_Sigma50 \
+  --input_dir <PATH_TO_TEST_SET>/LSDIR_DIV2K_Test_Sigma50 \
   --output_dir results/NTIRE2026_MoCE_IR_AIO3_sigma50 \
   --submission_zip results/NTIRE2026_MoCE_IR_AIO3_sigma50_submission.zip \
   --competition_url "https://www.codabench.org/competitions/12905/#/pages-tab" \
