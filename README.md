@@ -1,6 +1,7 @@
 # NTIRE 2026 Image Denoising Challenge (noise level = 50)
 
-This document describes how to reproduce our test submission for the NTIRE 2026 Image Denoising Challenge.
+This repository contains the code used to reproduce our test submission for the NTIRE 2026 Image Denoising Challenge.
+Large artifacts such as `results/`, `checkpoints/`, and archived checkpoint bundles are not tracked in this repository.
 
 ## 1. Method
 
@@ -51,7 +52,9 @@ The directory contains 200 PNG images.
 
 ## 4. Checkpoint
 
-Expected checkpoint path:
+The pretrained checkpoint is not included in this repository.
+
+Expected local path after you place the checkpoint manually:
 
 ```text
 checkpoints/MoCE_IR_AIO3/last.ckpt
@@ -75,7 +78,15 @@ micromamba run -n moceir_pip python src/infer_competition.py \
 
 ## 6. Output
 
-After inference:
+The generated submission results are not stored in this repository.
+
+Final submission/result package:
+
+```text
+https://drive.google.com/file/d/1hXjxCXF-LcQ-gfpSLy_lIMeCm47XLagJ/view?usp=drive_link
+```
+
+If you run inference locally, the default output locations are:
 
 - Restored images are written to:
 
@@ -119,10 +130,11 @@ Main files used for reproduction:
 - `src/infer_competition.py`
 - `src/net/moce_ir.py`
 - `src/utils/test_utils.py`
-- `checkpoints/MoCE_IR_AIO3/last.ckpt`
+- `README.md`
 
 ## 9. Notes
 
 - This challenge test set does not provide public ground-truth images, so this workflow generates submission results only.
+- The repository intentionally excludes large files such as checkpoints, generated results, and checkpoint archives.
 - The inference script pads each image to a multiple of 16, runs the model, and crops the restored output back to the original image size.
 - Output file names are preserved to satisfy the challenge submission format.
