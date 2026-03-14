@@ -14,18 +14,37 @@ This submission uses the all-in-one `MoCE_IR_AIO3` checkpoint and runs it on the
 
 ## 2. Environment
 
-We used the environment created in this repository with Python 3.10 and PyTorch 2.5.1 + CUDA 11.8.
+The environment setup follows the original MoCE-IR repository: Python 3.10, PyTorch, `torchvision`, CUDA 11.8, and the packages listed in `requirements.txt`.
 
-Activate the environment:
+Create an environment:
 
 ```bash
-micromamba activate moceir_pip
+ENV_NAME="moceir"
+conda create -n $ENV_NAME python=3.10
+conda activate $ENV_NAME
 ```
 
-If activation is unavailable in your shell, run commands with:
+Install PyTorch and the remaining dependencies:
 
 ```bash
-micromamba run -n moceir_pip <command>
+conda install pytorch torchvision pytorch-cuda=11.8 -c pytorch -c nvidia
+pip install -r requirements.txt
+```
+
+If you prefer `micromamba`, the equivalent workflow is:
+
+```bash
+ENV_NAME="moceir"
+micromamba create -n $ENV_NAME python=3.10 pip
+micromamba activate $ENV_NAME
+pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu118
+pip install -r requirements.txt
+```
+
+The reproduction command below assumes an activated environment named `moceir`. If activation is unavailable in your shell, you can replace `python ...` with:
+
+```bash
+micromamba run -n moceir python ...
 ```
 
 ## 3. Data
@@ -71,7 +90,7 @@ checkpoints/MoCE_IR_AIO3/last.ckpt
 Run:
 
 ```bash
-micromamba run -n moceir_pip python src/infer_competition.py \
+python src/infer_competition.py \
   --model MoCE_IR \
   --checkpoint_id MoCE_IR_AIO3 \
   --input_dir <PATH_TO_TEST_SET>/LSDIR_DIV2K_Test_Sigma50 \
